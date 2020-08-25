@@ -10,7 +10,7 @@ const int STEP = 10000; // Number of movement steps
 const int TICK = 10;    // Number of steps between each save file
 
 const double LENGTH = 1;    // The length of box
-const double DENSITY = 0.1; // The density of system
+const double DENSITY = 0.5; // The density of system
 const double RADIUS = 0.02; // The radius of particles
 const double DELTATIME = 1; // particles[i].position[0] += DELTATIME * particles[i].velocity[0];
 const double V = 0.001;     //Initial velocity
@@ -33,7 +33,7 @@ const int NUMBER = int(AREAOFBOX * DENSITY / (PI * RADIUS * RADIUS));
 //********Set Random Numbers*********
 std::random_device rd;
 std::default_random_engine gen(rd());
-std::normal_distribution<double> norm_distribution_angle(0, PI / 128);
+std::normal_distribution<double> norm_distribution_angle(0, PI / 16);
 std::uniform_real_distribution<float> uniform_distribution(0.0, 1.0);
 //********Set Random Numbers*********
 
