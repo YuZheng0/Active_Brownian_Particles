@@ -1,4 +1,4 @@
-T1=readtable("/Users/yuzheng/Documents/Research_data/ABP_data/Revisedpaper data/rotation256/alpha/density0.5/data2/position19990.txt");
+T1=readtable("/Users/yuzheng/Desktop/dataa1/position100.csv");
 x0=T1.Var1;
 
 y0=T1.Var2; 

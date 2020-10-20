@@ -1,7 +1,7 @@
 clear;
 %T1=readtable("/Users/yuzheng/Documents/Research_data/ABP_data/ABP/noname2/xyposition8000.txt.txt",'ReadVariableNames',0);
 x = linspace(0,20000,201)';
-T1=readtable("/Users/yuzheng/Documents/Research_data/ABP_data/exp_cluster.txt",'ReadVariableNames',0);
+T1=readtable("/Users/yuzheng/Documents/Research_data/ABP_data/exp_vcorre.txt",'ReadVariableNames',0);
 x1=T1.Var1;
 y1=T1.Var2; 
 %T2=readtable("/Users/yuzheng/Documents/Research_data/ABP_data/exp_vcorre.txt",'ReadVariableNames',0);
@@ -18,8 +18,7 @@ figure;
 set(gca,'FontSize',30);
 axis square;
 box on;
-%axis([0,300,-1,1])
-axis([0,6,0,1])
+axis([0,300,-1,1])
 set(gca,'linewidth',2);
 hold on;
 plot(x1,y1,'r-o','LineWidth',2,'MarkerFaceColor','r');
@@ -34,9 +33,9 @@ plot(x1,y1,'r-o','LineWidth',2,'MarkerFaceColor','r');
 %text(0.2, 0.8, sprintf('y = %6.4f x + %6.3f', b),'FontSize',20 )
 
 %title('Velocity Correlation','FontSize',20)
-xlabel('Time(hr)','FontSize',25) 
+xlabel('Distance (\mum)') 
 %xlabel('r(\mum)','FontSize',40) 
-ylabel('Normalized Cluster Size','FontSize',25,'Rotation',90,'Position',[-1.03,0.5]) 
+ylabel('Velocity correlation function','FontSize',40,'Rotation',360,'Position',[-70,0]) 
 
 
 
