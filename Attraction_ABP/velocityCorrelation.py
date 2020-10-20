@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 parser = argparse.ArgumentParser()
 parser.add_argument('--data-dir', type=str, default='.')
 parser.add_argument('--save-dir', type=str, default='.')
-parser.add_argument('--steps', type=int, default=9000,
+parser.add_argument('--steps', type=int, default=8000,
                     help="number of movement steps")
-parser.add_argument('--tick', type=int, default=3000,
+parser.add_argument('--tick', type=int, default=2000,
                     help="number of steps between each save file")
 parser.add_argument('--binsize', type=int, default=0.04)
 args = parser.parse_args()
@@ -75,7 +75,9 @@ def main():
 
         x, y, y_err = np.asarray(
             mean_velocity_correlation_by_distance).transpose()
-        axes.plot(x, y, label=file_label)
+        np.savetxt(os.path.join(args.data_dir, f'xy{ff}.txt'),
+                   np.stack([x, y], axis=1))
+        axes.plot(x, y, label='density 0.1')
         #axes.fill_between(x, y-y_err, y+y_err, alpha=0.4)
         axes.set_xticks(bins)
         axes.set_xticklabels(bins, rotation=45)

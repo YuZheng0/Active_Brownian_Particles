@@ -69,7 +69,9 @@ def get_mean_cluster_numbers(data_dir):
 
 
 data_dirs = sorted(glob.glob(os.path.join(args.data_dir, 'data*')))
-labels = [f'Angle{d}' for d in (1, 3, 5, 7, 9)]
+print(data_dirs)
+#labels = [f'Angle{d}' for d in (1, 3, 5, 7, 9)]
+labels = [f'density{d}' for d in (0.1, 0.2, 0.3, 0.4, 0.5)]
 
 
 fig, ax = plt.subplots(figsize=(10, 10))
@@ -77,6 +79,8 @@ for data_dir, label in zip(data_dirs, labels):
     mean_cluster_numbers = get_mean_cluster_numbers(data_dir)
     ax.plot(range(0, 10001, 100), mean_cluster_numbers,
             label=label)
+    np.savetxt(os.path.join(data_dir, 'mean_cluster_numbers.txt'),
+               mean_cluster_numbers)
 
 plt.ylim(0, 1)
 # plt.xlabel()
