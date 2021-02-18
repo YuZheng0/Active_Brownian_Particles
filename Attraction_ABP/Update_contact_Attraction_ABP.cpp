@@ -96,16 +96,19 @@ bool isOppositeMove(Particle a, Particle b)
 {
     double d = boundaryDistance(a, b);
     double dv = std::sqrt(a.velocity[0] * a.velocity[0] + a.velocity[1] * a.velocity[1]);
+    double dv2 = std::sqrt(b.velocity[0] * b.velocity[0] + b.velocity[1] * b.velocity[1]);
     double deltax, deltay, deltax1, deltay1;
-    double cosTheta;
+    double cosTheta, cosBeta;
     deltax = boundaryDisplacementX(a, b);
     deltay = boundaryDisplacementY(a, b);
+    deltax1 = boundaryDisplacementX(b, a);
+    deltay1 = boundaryDisplacementY(b, a);
 
     cosTheta = (-deltax * a.velocity[0] + (-deltay) * a.velocity[1]) / (d * dv);
+    cosBeta = (-deltax1 * b.velocity[0] + (-deltay1) * b.velocity[1]) / (d * dv2);
 
-    return (cosTheta >= cos(ANGLE * PI / 180) and (a.velocity[0] * b.velocity[0] + a.velocity[1] * b.velocity[1] < 0));
+    return (cosTheta >= cos(ANGLE * PI / 180) and cosBeta >= cos(ANGLE * PI / 180) and (a.velocity[0] * b.velocity[0] + a.velocity[1] * b.velocity[1] < 0));
 }
-
 void initialization(Particle particles[])
 {
     int i = 0;
